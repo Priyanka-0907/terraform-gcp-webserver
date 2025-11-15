@@ -86,7 +86,6 @@ Open this in a browser:
 
 http://<external-ip>
 
-
 You should see:
 
   "This VM was launched using Terraform!"
