@@ -1,4 +1,4 @@
-# Terraform project to deploy a GCP VM, firewall rule, and Apache web server.
+# Terraform project to deploy a GCP VM, firewall rule, and Apache web server
 Terraform GCP Web Server Deployment
 
 This project demonstrates how to deploy a fully functional Apache Web Server on a Google Cloud Platform (GCP) Compute Engine VM using Terraform.
@@ -101,4 +101,5 @@ Type yes when asked.
 
 
 Author
+
 This project is part of my Cloud Engineer portfolio, showcasing real IAC deployment using Terraform and Google Cloud.
