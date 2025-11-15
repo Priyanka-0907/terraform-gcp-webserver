@@ -100,6 +100,6 @@ terraform destroy
 Type yes when asked.
 
 
-Author
+# Author
 
 This project is part of my Cloud Engineer portfolio, showcasing real IAC deployment using Terraform and Google Cloud.
