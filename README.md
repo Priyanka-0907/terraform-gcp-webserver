@@ -84,7 +84,7 @@ vm_external_ip = "34.xx.xx.xx"
 
 Open this in a browser:
 
-http://<external-ip>
+http://external_ip
 
 You should see:
 
