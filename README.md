@@ -1,4 +1,3 @@
-# terraform-gcp-webserver
 # Terraform project to deploy a GCP VM, firewall rule, and Apache web server.
 Terraform GCP Web Server Deployment
 
@@ -20,21 +19,21 @@ Terraform automatically creates the following resources on GCP:
 
 2. Firewall Rule
 
-      Allows inbound traffic on port 80 (HTTP)
+      . Allows inbound traffic on port 80 (HTTP)
 
 3. Compute Engine VM Instance
 
-      Region/Zone: us-west1 / us-west1-c
+      . Region/Zone: us-west1 / us-west1-c
 
-      Machine type: e2-micro (lab-friendly)
+      . Machine type: e2-micro (lab-friendly)
 
 4. Apache Web Server Deployment
 
-      Installed using a startup script
+      . Installed using a startup script
 
-      Hosts a sample webpage
+      . Hosts a sample webpage
 
-      Accessible via VM External IP
+      . Accessible via VM External IP
 
 
 # Project Structure
