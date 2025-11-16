@@ -1,0 +1,39 @@
+resource "google_compute_firewall" "allow_http" {
+  name    = "allow-http"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["http-server"]
+}
+
+resource "google_compute_instance" "vm" {
+  name         = "portfolio-vm"
+  machine_type = "e2-micro"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {}
+  }
+
+  tags = ["http-server"]
+
+  metadata_startup_script = <<-SCRIPT
+    #!/bin/bash
+    apt-get update
+    apt-get install -y nginx
+    echo "<h1>This VM was deployed using Terraform!</h1>" > /var/www/html/index.html
+    systemctl restart nginx
+  SCRIPT
+}
