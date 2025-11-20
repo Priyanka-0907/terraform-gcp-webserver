@@ -1,40 +1,26 @@
-# Terraform project to deploy a GCP VM, firewall rule, and Apache web server
-Terraform GCP Web Server Deployment
+# Automated Web Server Deployment on Google Cloud Using Terraform
 
-This project demonstrates how to deploy a fully functional Apache Web Server on a Google Cloud Platform (GCP) Compute Engine VM using Terraform.
-It includes automated provisioning of:
+# Project Overview
 
-VPC Network
-Firewall Rule (allowing HTTP traffic)
-Compute Engine VM
-Startup Script (installs Apache and hosts a custom webpage)
+This project demonstrates the automation of infrastructure deployment on Google Cloud Platform (GCP) using Terraform.
+The setup includes provisioning a Compute Engine virtual machine, configuring firewall rules, installing Nginx automatically through a startup script, and validating deployment through a public web page.
 
-This project is suitable for DevOps, Cloud Engineer, and SRE portfolios.
+This project reflects real-world cloud engineering skills such as infrastructure-as-code (IaC), VM provisioning, network configuration, and automation.
+
 
 # Architecture Overview
 
 Terraform automatically creates the following resources on GCP:
 
-1. VPC Network (default or custom)
+      VPC firewall rule allowing inbound HTTP (port 80)
 
-2. Firewall Rule
+      Compute Engine Virtual Machine (e2-micro)
 
-      . Allows inbound traffic on port 80 (HTTP)
+      Startup script that auto-installs Nginx
 
-3. Compute Engine VM Instance
+      Publicly accessible web server with a custom message
 
-      . Region/Zone: us-west1 / us-west1-c
-
-      . Machine type: e2-micro (lab-friendly)
-
-4. Apache Web Server Deployment
-
-      . Installed using a startup script
-
-      . Hosts a sample webpage
-
-      . Accessible via VM External IP
-
+     
 
 # Project Structure
 
@@ -53,9 +39,9 @@ Google Cloud Platform (GCP)
 
     . Compute Engine
 
-    . VPC Networking
+    . Firewall
 
-Apache Web Server
+Nginx
 
 Startup Script Automation
 
@@ -63,40 +49,52 @@ Startup Script Automation
 # How to Deploy This Project
  
 1️ Initialize Terraform
-terraform init
+      
+      terraform init
 
 2️ Preview the resources that will be created
-terraform plan
+      
+      terraform plan
 
-3️ Deploy infrastructure
-terraform apply
+3️ Apply and provision the infrastructure
+
+      terraform apply
+
+When prompted for variables (such as project_id), enter the values from your GCP environment.
+
+Terraform will create:
+
+      Firewall rule
+
+      VM instance
+
+      Automatic installation of Nginx
+      
+
+# Verify Deployment
+
+a. From Google Cloud Console
+
+Navigate to:
+Google Cloud Console → Compute Engine → VM Instances
+Confirm the VM named portfolio-vm is running.
+
+b. Test the web server
+
+Copy the VM's External IP from the console.
+Paste it into browser:
+      http://external-ip
+
+You should see the custom webpage deployed by the startup script.
 
 
-When prompted, type:
-yes
+# Cleanup (Destroy Resources)
 
-# Accessing the Web Server
+Run the command below to delete all provisioned GCP resources:
 
-After the deployment is complete, Terraform outputs the VM’s External IP:
+      terraform destroy
 
-vm_external_ip = "34.xx.xx.xx"
-
-
-Open this in a browser:
-
-http://external_ip
-
-You should see:
-
-  "This VM was launched using Terraform!"
-
-# Cleanup (Important for labs)
-
-To avoid extra costs or to end the lab:
-
-terraform destroy
-
-Type yes when asked.
+This is a best practice to avoid unnecessary cloud charges and maintain a clean project.
 
 
 # Author
